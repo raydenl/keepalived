@@ -10,7 +10,7 @@ sleep 1
 if ps -p "$KEEPALIVED_PID" > /dev/null 2>&1; then
     echo "  [i] Keepalived started successfully with PID $KEEPALIVED_PID"
 else
-    echo "  [i] ERROR: Keepalived failed to start. Check /var/log/keepalived.log for details."
+    echo "  [i] ERROR: Keepalived failed to start."
     
     exit 1
 fi
