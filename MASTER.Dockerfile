@@ -8,6 +8,7 @@ EXPOSE 53 53/udp
 EXPOSE 80
 EXPOSE 443
 
-RUN chmod +x custom-entrypoint.sh
+COPY custom-entrypoint.sh /custom-entrypoint.sh
+RUN chmod +x /custom-entrypoint.sh
 
-ENTRYPOINT ["custom-entrypoint.sh"]
+ENTRYPOINT ["/custom-entrypoint.sh"]
