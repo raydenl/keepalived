@@ -1,12 +1,8 @@
 #!/bin/sh
 
-# Ensure Keepalived log directory exists
-mkdir -p /var/log/keepalived
-chown pihole:pihole /var/log/keepalived
-
 # Start Keepalived with error checking
 echo "  [i] Starting Keepalived"
-/usr/sbin/keepalived -n -l -G -g /var/log/keepalived.log &
+/usr/sbin/keepalived &
 KEEPALIVED_PID=$!
 
 # Wait briefly and check if Keepalived started successfully
