@@ -8,4 +8,6 @@ EXPOSE 53 53/udp
 EXPOSE 80
 EXPOSE 443
 
-CMD sh -c "keepalived -n -l -D & start.sh"
+RUN chmod +x custom-entrypoint.sh
+
+ENTRYPOINT ["custom-entrypoint.sh"]
