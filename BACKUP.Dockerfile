@@ -10,4 +10,4 @@ EXPOSE 443
 
 ENTRYPOINT ["start.sh"]
 
-CMD /usr/sbin/keepalived
+CMD /usr/sbin/keepalived -n -l
