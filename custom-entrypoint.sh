@@ -2,7 +2,7 @@
 
 # Start Keepalived with error checking
 echo "  [i] Starting Keepalived"
-/usr/sbin/keepalived &
+/usr/sbin/keepalived -n -l &
 KEEPALIVED_PID=$!
 
 # Wait briefly and check if Keepalived started successfully
