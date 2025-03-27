@@ -8,6 +8,6 @@ EXPOSE 53 53/udp
 EXPOSE 80
 EXPOSE 443
 
-CMD /usr/sbin/keepalived -n -l
+CMD /usr/sbin/keepalived
 
 ENTRYPOINT ["start.sh"]
