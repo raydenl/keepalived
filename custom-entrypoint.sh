@@ -6,8 +6,8 @@ echo "  [i] Starting Keepalived"
 KEEPALIVED_PID=$!
 
 # Wait briefly and check if Keepalived started successfully
-sleep 1
-if ps -p "$KEEPALIVED_PID" > /dev/null 2>&1; then
+sleep 5
+if ps --pid "$KEEPALIVED_PID" > /dev/null; then
     echo "  [i] Keepalived started successfully with PID $KEEPALIVED_PID"
 else
     echo "  [i] ERROR: Keepalived failed to start."
