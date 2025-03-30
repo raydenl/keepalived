@@ -17,4 +17,6 @@ jobs:
   master-publish:
     uses: ./.github/workflows/shared-publish.yml
     with:
-      image_name: ${{ github.actor }}/pihole-keepalived-
+      image_name: ${{ github.actor }}/pihole-keepalived-master
+      dockerfile_prefix: MASTER
+      pihole_version: ${{ env.PIHOLE_VERSION }}
