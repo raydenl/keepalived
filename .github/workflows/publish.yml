@@ -21,6 +21,12 @@ jobs:
     steps:
       - run: echo "Exposing env variables to make available for reuseable workflows"
   master-publish:
+    permissions:
+      contents: read
+      packages: write
+      # This is used to complete the identity challenge
+      # with sigstore/fulcio when running outside of PRs.
+      id-token: write
     needs: [expose-vars]
     uses: ./.github/workflows/shared-publish.yml
     with:
@@ -28,6 +34,12 @@ jobs:
       dockerfile_prefix: MASTER
       pihole_version: ${{ needs.expose-vars.outputs.pihole-version }}
   backup-publish:
+    permissions:
+      contents: read
+      packages: write
+      # This is used to complete the identity challenge
+      # with sigstore/fulcio when running outside of PRs.
+      id-token: write
     needs: [expose-vars]
     uses: ./.github/workflows/shared-publish.yml
     with:
