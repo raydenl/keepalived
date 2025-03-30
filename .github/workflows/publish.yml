@@ -1,0 +1,20 @@
+name: Docker
+
+# This workflow uses actions that are not certified by GitHub.
+# They are provided by a third-party and are governed by
+# separate terms of service, privacy policy, and support
+# documentation.
+
+on:
+  push:
+    branches: [ "main" ]
+
+env:
+  # puihole version to use
+  PIHOLE_VERSION: 2025.03.1
+
+jobs:
+  master-publish:
+    uses: ./.github/workflows/shared-publish.yml
+    with:
+      image_name: ${{ github.actor }}/pihole-keepalived-
