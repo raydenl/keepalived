@@ -64,7 +64,7 @@ jobs:
         with:
           file: MASTER.Dockerfile
           build-args: PIHOLE_VERSION=${{ vars.PIHOLE_VERSION }}
-          platforms: linux/arm64/v8,linux/amd64
+          platforms: linux/arm64
           push: ${{ github.event_name != 'pull_request' }}
           tags: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ env.TAG }}
           cache-from: type=gha
