@@ -14,15 +14,21 @@ env:
   PIHOLE_VERSION: 2025.03.1
 
 jobs:
+  expose-vars:
+    runs-on: ubuntu-latest
+    outputs:
+      pihole-version: ${{ env.PIHOLE_VERSION }}
   master-publish:
+    needs: [expose-vars]
     uses: ./.github/workflows/shared-publish.yml
     with:
       image_name: ${{ github.actor }}/pihole-keepalived-master
       dockerfile_prefix: MASTER
-      pihole_version: ${{ env.PIHOLE_VERSION }}
+      pihole_version: ${{ needs.expose-vars.outputs.pihole-version }}
   backup-publish:
+    needs: [expose-vars]
     uses: ./.github/workflows/shared-publish.yml
     with:
       image_name: ${{ github.actor }}/pihole-keepalived-backup
       dockerfile_prefix: BACKUP
-      pihole_version: ${{ env.PIHOLE_VERSION }}
+      pihole_version: ${{ needs.expose-vars.outputs.pihole-version }}
