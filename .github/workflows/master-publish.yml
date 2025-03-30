@@ -64,7 +64,7 @@ jobs:
         with:
           file: MASTER.Dockerfile
           push: ${{ github.event_name != 'pull_request' }}
-          tags: ${{ env.IMAGE_NAME }}:${{ env.TAG }}
+          tags: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ env.TAG }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
 
