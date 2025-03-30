@@ -10,7 +10,7 @@ on:
     branches: [ "main" ]
 
 env:
-  # puihole version to use
+  # pihole version to use
   PIHOLE_VERSION: 2025.03.1
 
 jobs:
@@ -19,4 +19,10 @@ jobs:
     with:
       image_name: ${{ github.actor }}/pihole-keepalived-master
       dockerfile_prefix: MASTER
+      pihole_version: ${{ env.PIHOLE_VERSION }}
+  backup-publish:
+    uses: ./.github/workflows/shared-publish.yml
+    with:
+      image_name: ${{ github.actor }}/pihole-keepalived-backup
+      dockerfile_prefix: BACKUP
       pihole_version: ${{ env.PIHOLE_VERSION }}
