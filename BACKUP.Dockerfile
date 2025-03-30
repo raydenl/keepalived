@@ -1,4 +1,6 @@
-FROM pihole/pihole:2025.03.0
+ARG PIHOLE_VERSION
+ARG PIHOLE_IMAGE=pihole/pihole:$PIHOLE_VERSION
+FROM $PIHOLE_IMAGE
 
 RUN apk add --no-cache keepalived
 
