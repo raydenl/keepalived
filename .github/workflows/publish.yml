@@ -18,6 +18,8 @@ jobs:
     runs-on: ubuntu-latest
     outputs:
       pihole-version: ${{ env.PIHOLE_VERSION }}
+    steps:
+      - run: echo "Exposing env variables to make available for reuseable workflows"
   master-publish:
     needs: [expose-vars]
     uses: ./.github/workflows/shared-publish.yml
