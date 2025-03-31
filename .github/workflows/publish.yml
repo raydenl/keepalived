@@ -31,7 +31,7 @@ jobs:
     uses: ./.github/workflows/shared-publish.yml
     with:
       image_name: ${{ github.actor }}/pihole-keepalived-master
-      config_filename: keepalived_master.conf
+      config_filename: keepalived_master
       pihole_version: ${{ needs.expose-vars.outputs.pihole-version }}
   backup-publish:
     permissions:
@@ -44,5 +44,5 @@ jobs:
     uses: ./.github/workflows/shared-publish.yml
     with:
       image_name: ${{ github.actor }}/pihole-keepalived-backup
-      config_filename: keepalived_backup.conf
+      config_filename: keepalived_backup
       pihole_version: ${{ needs.expose-vars.outputs.pihole-version }}
