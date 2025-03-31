@@ -1,7 +1,8 @@
-ARG CONFIG_FILENAME=keepalived
 ARG PIHOLE_VERSION=latest
 ARG PIHOLE_IMAGE=pihole/pihole:$PIHOLE_VERSION
 FROM $PIHOLE_IMAGE
+
+ARG CONFIG_FILENAME=keepalived
 
 RUN apk add --no-cache keepalived
 
