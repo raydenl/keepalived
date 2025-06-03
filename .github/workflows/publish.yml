@@ -11,7 +11,7 @@ on:
 
 env:
   # pihole version to use
-  PIHOLE_VERSION: 2025.05.0
+  PIHOLE_VERSION: 2025.05.1
 
 jobs:
   expose-vars:
