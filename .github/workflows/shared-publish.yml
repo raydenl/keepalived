@@ -14,6 +14,9 @@ on:
       pihole_version:
         required: true
         type: string
+      keepalived_version:
+        required: true
+        type: string
       config_filename:
         required: true
         type: string
@@ -73,6 +76,7 @@ jobs:
           build-args: |
             PIHOLE_VERSION=${{ inputs.pihole_version }}
             CONFIG_FILENAME=${{ inputs.config_filename }}
+            KEEPALIVED_VERSION=${{ inputs.keepalived_version }}
           platforms: linux/arm64
           push: ${{ github.event_name != 'pull_request' }}
           tags: ${{ env.REGISTRY }}/${{ inputs.image_name }}:${{ env.TAG }}
