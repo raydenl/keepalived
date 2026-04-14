@@ -5,7 +5,7 @@ FROM $PIHOLE_IMAGE
 
 ARG CONFIG_FILENAME=keepalived
 
-RUN apk add --no-cache "keepalived=$KEEPALIVED_VERSION"
+RUN apk add --no-cache "keepalived=${KEEPALIVED_VERSION}"
 
 ADD ${CONFIG_FILENAME}.conf /etc/keepalived/keepalived.conf
 
