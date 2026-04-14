@@ -14,12 +14,14 @@ on:
 env:
   # pihole version to use
   PIHOLE_VERSION: latest
+  KEEPALIVED_VERSION: 2.3.4-r2
 
 jobs:
   expose-vars:
     runs-on: ubuntu-latest
     outputs:
       pihole-version: ${{ env.PIHOLE_VERSION }}
+      keepalived-version: ${{ env.KEEPALIVED_VERSION }}
     steps:
       - run: echo "Exposing env variables to make available for reuseable workflows"
   master-publish:
@@ -35,6 +37,7 @@ jobs:
       image_name: ${{ github.actor }}/pihole-keepalived-master
       config_filename: keepalived_master
       pihole_version: ${{ needs.expose-vars.outputs.pihole-version }}
+      keepalived_version: ${{ needs.expose-vars.outputs.keepalived-version }}
   backup-publish:
     permissions:
       contents: read
@@ -48,3 +51,4 @@ jobs:
       image_name: ${{ github.actor }}/pihole-keepalived-backup
       config_filename: keepalived_backup
       pihole_version: ${{ needs.expose-vars.outputs.pihole-version }}
+      keepalived_version: ${{ needs.expose-vars.outputs.keepalived-version }}
