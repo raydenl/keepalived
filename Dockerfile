@@ -5,7 +5,7 @@ FROM $PIHOLE_IMAGE
 
 ARG KEEPALIVED_VERSION
 
-RUN apk update && apk add --no-cache keepalived=${KEEPALIVED_VERSION}
+RUN apk update && apk add --no-cache keepalived=~${KEEPALIVED_VERSION}
 
 ARG CONFIG_FILENAME
 
