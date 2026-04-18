@@ -1,19 +1,17 @@
 #!/bin/sh
+set -eu
 
-# Start Keepalived with error checking
 echo "  [i] Starting Keepalived"
-/usr/sbin/keepalived -n -l &
+/usr/sbin/keepalived --dont-fork --log-console &
 KEEPALIVED_PID=$!
 
-# Wait briefly and check if Keepalived started successfully
-sleep 5
-if ps --pid "$KEEPALIVED_PID" > /dev/null; then
-    echo "  [i] Keepalived started successfully with PID $KEEPALIVED_PID"
-else
-    echo "  [i] ERROR: Keepalived failed to start."
-    
-    exit 1
-fi
+# Background watcher that kills container if keepalived dies
+(
+    wait "$KEEPALIVED_PID"
+    echo "  [!] ERROR: Keepalived exited unexpectedly."
+    kill 1   # kill container
+) &
 
-# Call the original start.sh
+echo "  [i] Keepalived started with PID $KEEPALIVED_PID"
+
 exec /usr/bin/start.sh
